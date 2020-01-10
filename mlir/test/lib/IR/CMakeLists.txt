@@ -9,9 +9,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../TestDialect)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../TestDialect)
 add_dependencies(MLIRTestIR
   MLIRTestDialect
-  MLIRStandardOps
 )
 target_link_libraries(MLIRTestIR
   MLIRPass
-  MLIRStandardOps
 )

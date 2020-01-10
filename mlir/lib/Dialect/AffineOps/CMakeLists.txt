@@ -14,5 +14,5 @@ add_dependencies(MLIRAffineOps
   MLIRIR
   MLIRLoopLikeInterfaceIncGen
   MLIRStandardOps)
-# target_link_libraries(MLIRAffineOps MLIRIR MLIRStandardOps)
+target_link_libraries(MLIRAffineOps MLIRIR MLIRStandardOps)
 

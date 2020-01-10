@@ -21,12 +21,10 @@ add_mlir_library(MLIRTestDialect
 )
 add_dependencies(MLIRTestDialect
   MLIRIR
-  MLIRTransforms
   LLVMSupport
 )
 target_link_libraries(MLIRTestDialect
   MLIRDialect
   MLIRIR
-  MLIRTransforms
   LLVMSupport
 )

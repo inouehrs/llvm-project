@@ -15,4 +15,4 @@ add_dependencies(MLIRStandardOps
   MLIRIR
   LLVMSupport
   )
-target_link_libraries(MLIRStandardOps LLVMSupport)
+target_link_libraries(MLIRStandardOps MLIRIR LLVMSupport)

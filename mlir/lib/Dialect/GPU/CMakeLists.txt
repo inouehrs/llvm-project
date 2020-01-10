@@ -11,7 +11,7 @@ add_dependencies(MLIRGPU
   MLIRGPUOpsIncGen
   MLIREDSC
   MLIRIR
-#  MLIRLLVMIR
+ MLIRLLVMIR
   MLIRLoopOps
   MLIRSupport
   MLIRTransformUtils
@@ -19,7 +19,7 @@ add_dependencies(MLIRGPU
 target_link_libraries(MLIRGPU
   MLIREDSC
   MLIRIR
-#  MLIRLLVMIR
+  MLIRLLVMIR
   MLIRLoopOps
   MLIRSupport
   MLIRTransformUtils

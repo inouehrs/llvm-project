@@ -4,12 +4,10 @@ set(LLVM_OPTIONAL_SOURCES
 
 set(LIB_LIBS
   MLIRAnalysis
-#  MLIRLLVMIR
   MLIRParser
   MLIRPass
   MLIRTransforms
   MLIRSupport
-  MLIROptMain
 )
 add_mlir_library(MLIRMlirOptLib
   mlir-opt.cpp
