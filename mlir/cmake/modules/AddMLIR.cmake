@@ -4,7 +4,7 @@ macro(add_mlir_library name)
     ""
     ""
     ${ARGN})
-  
+
   if( ARG_SHARED )
     set(LIBTYPE SHARED)
   else()
