@@ -1,7 +1,7 @@
 if(MLIR_CUDA_CONVERSIONS_ENABLED)
   llvm_map_components_to_libnames(nvptx "NVPTX")
 
-  add_llvm_library(MLIRGPUtoCUDATransforms
+  add_mlir_library(MLIRGPUtoCUDATransforms
     ConvertKernelFuncToCubin.cpp
     ConvertLaunchFuncToCudaCalls.cpp
   )

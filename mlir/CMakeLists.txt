@@ -6,6 +6,11 @@ set(MLIR_TABLEGEN_EXE mlir-tblgen)
 set(MLIR_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(MLIR_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
+# Make sure that our source directory is on the current cmake module path so that
+# we can include cmake files from this directory.
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+include(AddMLIR)
+
 function(mlir_tablegen ofn)
   tablegen(MLIR ${ARGV} "-I${MLIR_MAIN_SRC_DIR}" "-I${MLIR_INCLUDE_DIR}")
   set(TABLEGEN_OUTPUT ${TABLEGEN_OUTPUT} ${CMAKE_CURRENT_BINARY_DIR}/${ofn}

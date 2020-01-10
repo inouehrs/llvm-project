@@ -5,7 +5,7 @@ set(LLVM_OPTIONAL_SOURCES
   Intrinsics.cpp
   )
 
-add_llvm_library(MLIREDSC
+add_mlir_library(MLIREDSC
   Builders.cpp
   Helpers.cpp
   Intrinsics.cpp
@@ -22,7 +22,7 @@ target_link_libraries(MLIREDSC
     MLIRVectorOps
     )
 
-add_llvm_library(MLIREDSCInterface
+add_mlir_library(MLIREDSCInterface
   CoreAPIs.cpp
 
   ADDITIONAL_HEADER_DIRS

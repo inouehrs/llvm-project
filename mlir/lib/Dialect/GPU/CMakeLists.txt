@@ -1,4 +1,4 @@
-add_llvm_library(MLIRGPU
+add_mlir_library(MLIRGPU
   IR/GPUDialect.cpp
   IR/DialectRegistration.cpp
   Transforms/KernelOutlining.cpp
@@ -11,7 +11,7 @@ add_dependencies(MLIRGPU
   MLIRGPUOpsIncGen
   MLIREDSC
   MLIRIR
-  MLIRLLVMIR
+#  MLIRLLVMIR
   MLIRLoopOps
   MLIRSupport
   MLIRTransformUtils
@@ -19,7 +19,7 @@ add_dependencies(MLIRGPU
 target_link_libraries(MLIRGPU
   MLIREDSC
   MLIRIR
-  MLIRLLVMIR
+#  MLIRLLVMIR
   MLIRLoopOps
   MLIRSupport
   MLIRTransformUtils

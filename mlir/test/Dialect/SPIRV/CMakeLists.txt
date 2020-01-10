@@ -1,4 +1,4 @@
-add_llvm_library(MLIRSPIRVTestPasses
+add_mlir_library(MLIRSPIRVTestPasses
   TestAvailability.cpp
 
   ADDITIONAL_HEADER_DIRS

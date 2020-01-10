@@ -1,4 +1,4 @@
-add_llvm_library(MLIRAnalysis STATIC
+add_mlir_library(MLIRAnalysis STATIC
   AffineAnalysis.cpp
   AffineStructures.cpp
   CallGraph.cpp
@@ -18,6 +18,10 @@ add_llvm_library(MLIRAnalysis STATIC
 
   ADDITIONAL_HEADER_DIRS
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Analysis
+
+  DEPENDS
+  MLIRCallOpInterfacesIncGen
+  MLIRTypeInferOpInterfaceIncGen
   )
 add_dependencies(MLIRAnalysis
   MLIRAffineOps

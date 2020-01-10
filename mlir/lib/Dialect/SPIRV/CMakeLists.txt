@@ -2,7 +2,7 @@ set(LLVM_TARGET_DEFINITIONS SPIRVCanonicalization.td)
 mlir_tablegen(SPIRVCanonicalization.inc -gen-rewriters)
 add_public_tablegen_target(MLIRSPIRVCanonicalizationIncGen)
 
-add_llvm_library(MLIRSPIRV
+add_mlir_library(MLIRSPIRV
   DialectRegistration.cpp
   LayoutUtils.cpp
   SPIRVDialect.cpp
@@ -13,6 +13,14 @@ add_llvm_library(MLIRSPIRV
 
   ADDITIONAL_HEADER_DIRS
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Dialect/SPIRV
+
+  DEPENDS
+  MLIRSPIRVAvailabilityIncGen
+  MLIRSPIRVCanonicalizationIncGen
+  MLIRSPIRVEnumAvailabilityIncGen
+  MLIRSPIRVEnumsIncGen
+  MLIRSPIRVOpsIncGen
+  MLIRSPIRVTargetAndABIIncGen
   )
 
 add_dependencies(MLIRSPIRV

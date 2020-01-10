@@ -1,4 +1,4 @@
-add_llvm_library(MLIRLinalg
+add_mlir_library(MLIRLinalg
   LinalgRegistration.cpp
   Analysis/DependenceAnalysis.cpp
   EDSC/Builders.cpp
@@ -15,6 +15,9 @@ add_llvm_library(MLIRLinalg
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Dialect/Linalg
   DEPENDS
   intrinsics_gen
+  MLIRLinalgOpsIncGen
+  MLIRLinalgStructuredOpsIncGen
+  MLIRLinalgTransformPatternsIncGen
   )
 
 add_dependencies(MLIRLinalg
@@ -29,3 +32,5 @@ add_dependencies(MLIRLinalg
   MLIRStandardToLLVM
   MLIRVectorOps
   )
+
+target_link_libraries(MLIRLinalg MLIRIR MLIRLLVMIR MLIRStandardOps LLVMSupport)

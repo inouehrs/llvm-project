@@ -43,6 +43,13 @@ target_link_libraries(toyc-ch7
     MLIRStandardToLLVM
     MLIRTargetLLVMIR
     MLIRTransforms
+    LLVMMC
+    LLVMScalarOpts
+    LLVMInstCombine
+    LLVMAggressiveInstCombine
+    LLVMAnalysis
+    LLVMVectorize
+    LLVMTarget
     )
 
 whole_archive_link(toyc-ch7

@@ -1,4 +1,4 @@
-add_llvm_library(LLVMMLIRTableGen
+add_mlir_library(LLVMMLIRTableGen
   Argument.cpp
   Attribute.cpp
   Constraint.cpp

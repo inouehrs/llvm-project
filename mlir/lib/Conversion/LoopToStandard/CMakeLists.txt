@@ -1,4 +1,4 @@
-add_llvm_library(MLIRLoopToStandard
+add_mlir_library(MLIRLoopToStandard
   ConvertLoopToStandard.cpp
 
   ADDITIONAL_HEADER_DIRS

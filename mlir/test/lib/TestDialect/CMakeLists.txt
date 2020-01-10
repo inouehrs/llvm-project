@@ -11,18 +11,22 @@ mlir_tablegen(TestOpEnums.cpp.inc -gen-enum-defs)
 mlir_tablegen(TestPatterns.inc -gen-rewriters)
 add_public_tablegen_target(MLIRTestOpsIncGen)
 
-add_llvm_library(MLIRTestDialect
+add_mlir_library(MLIRTestDialect
   TestDialect.cpp
   TestPatterns.cpp
+
+  DEPENDS
+  MLIRTestOpsIncGen
+  MLIRTypeInferOpInterfaceIncGen
 )
 add_dependencies(MLIRTestDialect
-  MLIRTestOpsIncGen
   MLIRIR
+  MLIRTransforms
   LLVMSupport
-  MLIRTypeInferOpInterfaceIncGen
 )
 target_link_libraries(MLIRTestDialect
   MLIRDialect
   MLIRIR
+  MLIRTransforms
   LLVMSupport
 )

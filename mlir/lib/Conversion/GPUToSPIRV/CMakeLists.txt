@@ -1,4 +1,4 @@
-add_llvm_library(MLIRGPUtoSPIRVTransforms
+add_mlir_library(MLIRGPUtoSPIRVTransforms
   ConvertGPUToSPIRV.cpp
   ConvertGPUToSPIRVPass.cpp
   )

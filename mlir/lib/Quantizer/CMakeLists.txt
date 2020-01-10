@@ -1,5 +1,5 @@
 # Support.
-add_llvm_library(MLIRQuantizerSupport
+add_mlir_library(MLIRQuantizerSupport
   Support/Configuration.cpp
   Support/ConstraintAnalysisGraph.cpp
   Support/Metadata.cpp
@@ -17,7 +17,7 @@ add_dependencies(MLIRQuantizerSupport
                  MLIRStandardOps)
 
 # Configurations.
-add_llvm_library(MLIRQuantizerFxpMathConfig
+add_mlir_library(MLIRQuantizerFxpMathConfig
   Configurations/FxpMathConfig.cpp
 
   ADDITIONAL_HEADER_DIRS
@@ -27,7 +27,7 @@ add_dependencies(MLIRQuantizerFxpMathConfig
                  MLIRQuantizerSupport)
 
 # Transforms.
-add_llvm_library(MLIRQuantizerTransforms
+add_mlir_library(MLIRQuantizerTransforms
   Transforms/AddDefaultStatsTestPass.cpp
   Transforms/InferQuantizedTypesPass.cpp
   Transforms/RemoveInstrumentationPass.cpp

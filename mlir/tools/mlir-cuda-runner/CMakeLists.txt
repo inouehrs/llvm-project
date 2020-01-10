@@ -23,7 +23,7 @@ if(MLIR_CUDA_RUNNER_ENABLED)
   # We need the libcuda.so library.
   find_library(CUDA_RUNTIME_LIBRARY cuda)
 
-  add_llvm_library(cuda-runtime-wrappers SHARED
+  add_mlir_library(cuda-runtime-wrappers SHARED
     cuda-runtime-wrappers.cpp
   )
   target_include_directories(cuda-runtime-wrappers

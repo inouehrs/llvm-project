@@ -1,10 +1,14 @@
-add_llvm_library(MLIRVectorOps
+add_mlir_library(MLIRVectorOps
   DialectRegistration.cpp
   VectorOps.cpp
   VectorTransforms.cpp
 
   ADDITIONAL_HEADER_DIRS
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Dialect/VectorOps
+
+  DEPENDS
+  MLIRVectorOpsIncGen
+  MLIRVectorTransformPatternsIncGen
   )
 
 add_dependencies(MLIRVectorOps MLIRVectorOpsIncGen)
