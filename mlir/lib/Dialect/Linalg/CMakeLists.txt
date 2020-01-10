@@ -32,5 +32,3 @@ add_dependencies(MLIRLinalg
   MLIRStandardToLLVM
   MLIRVectorOps
   )
-
-target_link_libraries(MLIRLinalg MLIRIR MLIRLLVMIR MLIRStandardOps LLVMSupport)

@@ -33,4 +33,4 @@ target_link_libraries(MLIRTestTransforms
   MLIRPass
   MLIRTestDialect
   MLIRVectorOps
-)
+  )

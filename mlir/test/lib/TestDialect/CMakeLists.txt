@@ -20,8 +20,10 @@ add_mlir_library(MLIRTestDialect
   MLIRTypeInferOpInterfaceIncGen
 )
 add_dependencies(MLIRTestDialect
+  MLIRTestOpsIncGen
   MLIRIR
   LLVMSupport
+  MLIRTypeInferOpInterfaceIncGen
 )
 target_link_libraries(MLIRTestDialect
   MLIRDialect

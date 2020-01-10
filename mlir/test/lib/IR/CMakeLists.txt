@@ -12,4 +12,4 @@ add_dependencies(MLIRTestIR
 )
 target_link_libraries(MLIRTestIR
   MLIRPass
-)
+  )
