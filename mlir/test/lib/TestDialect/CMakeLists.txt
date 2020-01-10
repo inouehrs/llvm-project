@@ -14,10 +14,6 @@ add_public_tablegen_target(MLIRTestOpsIncGen)
 add_mlir_library(MLIRTestDialect
   TestDialect.cpp
   TestPatterns.cpp
-
-  DEPENDS
-  MLIRTestOpsIncGen
-  MLIRTypeInferOpInterfaceIncGen
 )
 add_dependencies(MLIRTestDialect
   MLIRTestOpsIncGen
