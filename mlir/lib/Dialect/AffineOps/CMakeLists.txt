@@ -4,10 +4,6 @@ add_mlir_library(MLIRAffineOps
 
   ADDITIONAL_HEADER_DIRS
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Dialect/AffineOps
-
-  DEPENDS
-  MLIRAffineOpsIncGen
-  MLIRLoopLikeInterfaceIncGen
   )
 add_dependencies(MLIRAffineOps
   MLIRAffineOpsIncGen

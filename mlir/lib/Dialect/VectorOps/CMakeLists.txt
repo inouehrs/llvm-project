@@ -5,10 +5,6 @@ add_mlir_library(MLIRVectorOps
 
   ADDITIONAL_HEADER_DIRS
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Dialect/VectorOps
-
-  DEPENDS
-  MLIRVectorOpsIncGen
-  MLIRVectorTransformPatternsIncGen
   )
 
 add_dependencies(MLIRVectorOps MLIRVectorOpsIncGen)

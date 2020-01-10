@@ -13,14 +13,6 @@ add_mlir_library(MLIRSPIRV
 
   ADDITIONAL_HEADER_DIRS
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Dialect/SPIRV
-
-  DEPENDS
-  MLIRSPIRVAvailabilityIncGen
-  MLIRSPIRVCanonicalizationIncGen
-  MLIRSPIRVEnumAvailabilityIncGen
-  MLIRSPIRVEnumsIncGen
-  MLIRSPIRVOpsIncGen
-  MLIRSPIRVTargetAndABIIncGen
   )
 
 add_dependencies(MLIRSPIRV

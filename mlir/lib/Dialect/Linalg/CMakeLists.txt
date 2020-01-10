@@ -15,9 +15,6 @@ add_mlir_library(MLIRLinalg
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Dialect/Linalg
   DEPENDS
   intrinsics_gen
-  MLIRLinalgOpsIncGen
-  MLIRLinalgStructuredOpsIncGen
-  MLIRLinalgTransformPatternsIncGen
   )
 
 add_dependencies(MLIRLinalg

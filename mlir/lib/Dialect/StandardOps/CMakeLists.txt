@@ -4,10 +4,6 @@ add_mlir_library(MLIRStandardOps
 
   ADDITIONAL_HEADER_DIRS
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Dialect/StandardOps
-
-  DEPENDS
-  MLIRCallOpInterfacesIncGen
-  MLIRStandardOpsIncGen
   )
 add_dependencies(MLIRStandardOps
   MLIRCallOpInterfacesIncGen
