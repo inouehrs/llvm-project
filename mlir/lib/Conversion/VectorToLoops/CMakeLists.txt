@@ -5,6 +5,8 @@ add_mlir_library(MLIRVectorToLoops
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Conversion/VectorToLoops
 )
 set(LIBS
+  MLIREDSC
+  MLIRIR
   MLIRLLVMIR
   MLIRTransforms
   LLVMCore

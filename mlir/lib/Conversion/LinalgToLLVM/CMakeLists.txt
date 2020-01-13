@@ -8,6 +8,8 @@ set(LIBS
   MLIRLinalg
   MLIRLLVMIR
   MLIRTransforms
+  MLIRAffineToStandard
+  MLIRVectorToLLVM
   LLVMCore
   LLVMSupport
   )

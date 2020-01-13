@@ -29,7 +29,7 @@ add_mlir_library(MLIREDSCInterface
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/EDSC
   )
 add_dependencies(MLIREDSCInterface MLIRIR)
-target_link_libraries(MLIREDSC
+target_link_libraries(MLIREDSCInterface
   PUBLIC
     MLIRIR
     MLIRSupport

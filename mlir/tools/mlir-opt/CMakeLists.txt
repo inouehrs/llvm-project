@@ -13,7 +13,7 @@ set(LIB_LIBS
 add_mlir_library(MLIRMlirOptLib
   mlir-opt.cpp
 )
-target_link_libraries(MLIRMlirOptLib ${LIB_LIBS})
+target_link_libraries(MLIRMlirOptLib MLIROptMain ${LIB_LIBS})
 
 set(LIBS
   MLIRAnalysis

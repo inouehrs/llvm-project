@@ -28,6 +28,7 @@ target_link_libraries(MLIRSPIRV
   MLIRIR
   MLIRParser
   MLIRSupport
+  MLIRTranslation
   MLIRTransforms)
 
 add_subdirectory(Serialization)

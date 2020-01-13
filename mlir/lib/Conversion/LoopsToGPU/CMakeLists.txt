@@ -7,6 +7,7 @@ set(LIBS
   MLIRStandardOps
   MLIRSupport
   MLIRTransforms
+  MLIRAffineToStandard
   LLVMSupport
 )
 

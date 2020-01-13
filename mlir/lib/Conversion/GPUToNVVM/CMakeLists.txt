@@ -12,6 +12,7 @@ add_dependencies(MLIRGPUtoNVVMTransforms
 target_link_libraries(MLIRGPUtoNVVMTransforms
   LLVMSupport
   MLIRGPU
+  MLIRStandardToLLVM
   MLIRLLVMIR
   MLIRNVVMIR
   MLIRPass

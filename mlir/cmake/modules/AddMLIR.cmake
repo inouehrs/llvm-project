@@ -6,7 +6,7 @@ macro(add_mlir_library name)
     ${ARGN})
 
   # LIBTYPE=STATIC as the default within MLIR even with BUILD_SHARED_LIBS=ON
-  set(LIBTYPE STATIC)
+  set(LIBTYPE SHARED)
 
   if(ARG_MODULE)
     set(LIBTYPE MODULE)

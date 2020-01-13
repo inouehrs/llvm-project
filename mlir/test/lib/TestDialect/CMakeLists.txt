@@ -24,5 +24,7 @@ add_dependencies(MLIRTestDialect
 target_link_libraries(MLIRTestDialect
   MLIRDialect
   MLIRIR
+  MLIRPass
+  MLIRTransforms
   LLVMSupport
 )

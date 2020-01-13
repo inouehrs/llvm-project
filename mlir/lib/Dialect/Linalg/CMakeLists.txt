@@ -22,6 +22,7 @@ add_dependencies(MLIRLinalg
   MLIRAffineOps
   MLIRAnalysis
   MLIREDSC
+  MLIRIR
   MLIRLinalgOpsIncGen
   MLIRLinalgStructuredOpsIncGen
   MLIRLinalgTransformPatternsIncGen
@@ -29,3 +30,16 @@ add_dependencies(MLIRLinalg
   MLIRStandardToLLVM
   MLIRVectorOps
   )
+
+target_link_libraries(MLIRLinalg
+
+  MLIRAffineOps
+  MLIRAnalysis
+  MLIREDSC
+  MLIRIR
+  MLIRStandardOps
+  MLIRStandardToLLVM
+  MLIRVectorOps
+  )
+
+

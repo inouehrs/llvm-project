@@ -16,6 +16,12 @@ add_dependencies(MLIRQuantizerSupport
                  MLIRSupport
                  MLIRStandardOps)
 
+target_link_libraries(MLIRQuantizerSupport
+                 MLIRIR
+                 MLIRQuantOps
+                 MLIRSupport
+                 MLIRStandardOps)
+
 # Configurations.
 add_mlir_library(MLIRQuantizerFxpMathConfig
   Configurations/FxpMathConfig.cpp
@@ -23,9 +29,12 @@ add_mlir_library(MLIRQuantizerFxpMathConfig
   ADDITIONAL_HEADER_DIRS
   )
 add_dependencies(MLIRQuantizerFxpMathConfig
+	MLIRFxpMathOps
                  MLIRFxpMathOpsIncGen
                  MLIRQuantizerSupport)
-
+target_link_libraries(MLIRQuantizerFxpMathConfig
+		MLIRFxpMathOps
+                 MLIRQuantizerSupport)
 # Transforms.
 add_mlir_library(MLIRQuantizerTransforms
   Transforms/AddDefaultStatsTestPass.cpp

@@ -14,7 +14,7 @@ add_mlir_library(MLIRNVVMIR
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Dialect/LLVMIR
   )
 add_dependencies(MLIRNVVMIR MLIRNVVMOpsIncGen MLIRNVVMConversionsIncGen LLVMAsmParser LLVMCore LLVMSupport)
-target_link_libraries(MLIRNVVMIR LLVMAsmParser LLVMCore LLVMSupport MLIRIR)
+target_link_libraries(MLIRNVVMIR LLVMAsmParser LLVMCore LLVMSupport MLIRIR MLIRLLVMIR)
 
 add_mlir_library(MLIRROCDLIR
   IR/ROCDLDialect.cpp
