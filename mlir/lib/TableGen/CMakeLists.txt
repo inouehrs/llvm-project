@@ -5,6 +5,7 @@ add_mlir_library(LLVMMLIRTableGen
   Dialect.cpp
   Format.cpp
   Operator.cpp
+  OpClass.cpp
   OpInterfaces.cpp
   OpTrait.cpp
   Pattern.cpp

@@ -10,6 +10,7 @@
 
 #include "mlir/Dialect/AffineOps/AffineOps.h"
 #include "mlir/Dialect/Linalg/EDSC/Builders.h"
+#include "mlir/Dialect/Linalg/EDSC/Intrinsics.h"
 #include "mlir/Dialect/Linalg/IR/LinalgOps.h"
 #include "mlir/Dialect/StandardOps/Ops.h"
 #include "mlir/EDSC/Builders.h"
@@ -454,6 +455,32 @@ TEST_FUNC(insertion_in_block) {
   // CHECK: {{.*}} = constant 2 : i32
   // CHECK: ^bb1:   // no predecessors
   // CHECK: {{.*}} = constant 1 : i32
+  // clang-format on
+  f.print(llvm::outs());
+  f.erase();
+}
+
+TEST_FUNC(zero_and_sign_extendi_op_i1_to_i8) {
+  using namespace edsc;
+  using namespace edsc::intrinsics;
+  using namespace edsc::op;
+  auto i1Type = IntegerType::get(1, &globalContext());
+  auto i8Type = IntegerType::get(8, &globalContext());
+  auto memrefType = MemRefType::get({}, i1Type, {}, 0);
+  auto f = makeFunction("zero_and_sign_extendi_op", {}, {memrefType, memrefType});
+
+  OpBuilder builder(f.getBody());
+  ScopedContext scope(builder, f.getLoc());
+  IndexedValue A(f.getArgument(0));
+  IndexedValue B(f.getArgument(1));
+  // clang-format off
+  edsc::intrinsics::zero_extendi(*A, i8Type);
+  edsc::intrinsics::sign_extendi(*B, i8Type);
+  // CHECK-LABEL: @zero_and_sign_extendi_op
+  //      CHECK:     %[[SRC1:.*]] = affine.load
+  //      CHECK:     zexti %[[SRC1]] : i1 to i8
+  //      CHECK:     %[[SRC2:.*]] = affine.load
+  //      CHECK:     sexti %[[SRC2]] : i1 to i8
   // clang-format on
   f.print(llvm::outs());
   f.erase();
@@ -931,6 +958,32 @@ TEST_FUNC(linalg_dilated_conv_nhwc) {
       makeValueHandles(llvm::to_vector<3>(f.getArguments())),
       /*depth_multiplier=*/7,
       /*strides=*/{3, 4}, /*dilations=*/{5, 6});
+
+  f.print(llvm::outs());
+  f.erase();
+}
+
+// clang-format off
+// CHECK-LABEL: func @linalg_metadata_ops
+//       CHECK: linalg.reshape {{.*}} [(d0, d1, d2) -> (d0, d1), (d0, d1, d2) -> (d2)] : memref<4x8x16xf32> into memref<32x16xf32>
+//       CHECK: linalg.reshape {{.*}} [(d0, d1, d2) -> (d0, d1), (d0, d1, d2) -> (d2)] : memref<32x16xf32> into memref<4x8x16xf32>
+// clang-format on
+TEST_FUNC(linalg_metadata_ops) {
+  using namespace edsc;
+  using namespace edsc::intrinsics;
+
+  auto f32Type = FloatType::getF32(&globalContext());
+  auto memrefType = MemRefType::get({4, 8, 16}, f32Type, {}, 0);
+  auto f = makeFunction("linalg_metadata_ops", {}, {memrefType});
+
+  OpBuilder builder(f.getBody());
+  ScopedContext scope(builder, f.getLoc());
+  AffineExpr i, j, k;
+  bindDims(&globalContext(), i, j, k);
+  ValueHandle v(f.getArgument(0));
+  auto reshaped = linalg_reshape(v, ArrayRef<ArrayRef<AffineExpr>>{{i, j}, k});
+  linalg_reshape(memrefType, reshaped,
+                 ArrayRef<ArrayRef<AffineExpr>>{{i, j}, k});
 
   f.print(llvm::outs());
   f.erase();

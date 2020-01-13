@@ -2397,6 +2397,12 @@ static void CollectArgsForIntegratedAssembler(Compilation &C,
       } else if (Value == "-fdebug-compilation-dir") {
         CmdArgs.push_back("-fdebug-compilation-dir");
         TakeNextArg = true;
+      } else if (Value.consume_front("-fdebug-compilation-dir=")) {
+        // The flag is a -Wa / -Xassembler argument and Options doesn't
+        // parse the argument, so this isn't automatically aliased to
+        // -fdebug-compilation-dir (without '=') here.
+        CmdArgs.push_back("-fdebug-compilation-dir");
+        CmdArgs.push_back(Value.data());
       } else {
         D.Diag(diag::err_drv_unsupported_option_argument)
             << A->getOption().getName() << Value;
@@ -4525,6 +4531,19 @@ void Clang::ConstructJob(Compilation &C, const JobAction &JA,
     CmdArgs.push_back(A->getValue());
   }
 
+  if (Arg *A = Args.getLastArg(options::OPT_mtls_size_EQ)) {
+    StringRef Value = A->getValue();
+    unsigned TLSSize = 0;
+    Value.getAsInteger(10, TLSSize);
+    if (!Triple.isAArch64() || !Triple.isOSBinFormatELF())
+      D.Diag(diag::err_drv_unsupported_opt_for_target)
+          << A->getOption().getName() << TripleStr;
+    if (TLSSize != 12 && TLSSize != 24 && TLSSize != 32 && TLSSize != 48)
+      D.Diag(diag::err_drv_invalid_int_value)
+          << A->getOption().getName() << Value;
+    Args.AddLastArg(CmdArgs, options::OPT_mtls_size_EQ);
+  }
+
   // Add the target cpu
   std::string CPU = getCPUName(Args, Triple, /*FromAs*/ false);
   if (!CPU.empty()) {
@@ -5960,6 +5979,10 @@ void Clang::ConstructJob(Compilation &C, const JobAction &JA,
     // fails, so that the main compilation's fallback to cl.exe runs.
     C.addCommand(std::make_unique<ForceSuccessCommand>(JA, *this, Exec,
                                                         CmdArgs, Inputs));
+  } else if (D.CC1Main && !D.CCGenDiagnostics) {
+    // Invoke the CC1 directly in this process
+    C.addCommand(
+        std::make_unique<CC1Command>(JA, *this, Exec, CmdArgs, Inputs));
   } else {
     C.addCommand(std::make_unique<Command>(JA, *this, Exec, CmdArgs, Inputs));
   }
