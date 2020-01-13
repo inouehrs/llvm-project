@@ -1,4 +1,4 @@
-add_mlir_library(MLIRAnalysis STATIC
+add_mlir_library(MLIRAnalysis
   AffineAnalysis.cpp
   AffineStructures.cpp
   CallGraph.cpp
@@ -20,6 +20,6 @@ add_mlir_library(MLIRAnalysis STATIC
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Analysis
   )
 add_dependencies(MLIRAnalysis
-	MLIRCallOpInterfacesIncGen
+  MLIRCallOpInterfacesIncGen
   MLIRTypeInferOpInterfaceIncGen
   )
