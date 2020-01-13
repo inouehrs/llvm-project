@@ -41,5 +41,3 @@ target_link_libraries(MLIRLinalg
   MLIRStandardToLLVM
   MLIRVectorOps
   )
-
-

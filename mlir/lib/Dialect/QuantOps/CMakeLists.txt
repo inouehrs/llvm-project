@@ -17,13 +17,16 @@ add_dependencies(MLIRQuantOps
                  MLIRIR
                  MLIRPass
                  MLIRQuantOpsIncGen
+                 MLIRStandardOps
                  MLIRSupport
-                 MLIRStandardOps)
- 
+                 MLIRTransformUtils
+                 )
+
 target_link_libraries(MLIRQuantOps
-                MLIRIR
-		MLIRTransformUtils
-                 MLIRPass
-                 MLIRSupport
-                 MLIRStandardOps)
-	
+                      MLIRIR
+                      MLIRPass
+                      MLIRStandardOps
+                      MLIRSupport
+                      MLIRTransformUtils
+                      )
+

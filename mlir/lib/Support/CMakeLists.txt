@@ -16,7 +16,6 @@ add_mlir_library(MLIRSupport
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Support
   )
 target_link_libraries(MLIRSupport LLVMSupport ${LLVM_PTHREAD_LIB})
-#target_link_libraries(MLIRSupport MLIRParser LLVMSupport ${LLVM_PTHREAD_LIB})
 
 add_mlir_library(MLIROptMain
   MlirOptMain.cpp
@@ -27,8 +26,8 @@ add_mlir_library(MLIROptMain
 target_link_libraries(MLIROptMain
   MLIRPass
   LLVMSupport
-  MLIRSupport
   MLIRParser
+  MLIRSupport
   )
 
 add_mlir_library(MLIRTranslateClParser
@@ -43,14 +42,14 @@ add_mlir_library(MLIRJitRunner
   JitRunner.cpp
 )
 target_link_libraries(MLIRJitRunner PRIVATE
-  MLIRExecutionEngine
-  MLIRIR
-  MLIRParser
-  MLIRStandardOps
-  MLIRTargetLLVMIR
-  MLIRTransforms
-  MLIRStandardToLLVM
-  MLIRSupport
-  LLVMCore
-  LLVMSupport
-)
+                      MLIRExecutionEngine
+                      MLIRIR
+                      MLIRParser
+                      MLIRStandardOps
+                      MLIRStandardToLLVM
+                      MLIRSupport
+                      MLIRTargetLLVMIR
+                      MLIRTransforms
+                      LLVMCore
+                      LLVMSupport
+                      )

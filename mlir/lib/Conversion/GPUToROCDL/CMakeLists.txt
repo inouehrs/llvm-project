@@ -6,6 +6,6 @@ target_link_libraries(MLIRGPUtoROCDLTransforms
   MLIRGPU
   MLIRLLVMIR
   MLIRROCDLIR
-  MLIRStandardToLLVM
   MLIRPass
+  MLIRStandardToLLVM
   )

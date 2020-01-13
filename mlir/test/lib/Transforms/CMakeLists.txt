@@ -33,6 +33,6 @@ target_link_libraries(MLIRTestTransforms
   MLIRLoopOps
   MLIRPass
   MLIRTestDialect
-  MLIRVectorToLoops
   MLIRVectorOps
+  MLIRVectorToLoops
   )

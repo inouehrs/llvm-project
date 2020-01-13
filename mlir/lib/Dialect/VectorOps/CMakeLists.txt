@@ -10,4 +10,4 @@ add_mlir_library(MLIRVectorOps
 add_dependencies(MLIRVectorOps MLIRVectorOpsIncGen)
 add_dependencies(MLIRVectorOps MLIRVectorTransformPatternsIncGen)
 
-target_link_libraries(MLIRVectorOps MLIRIR MLIRAffineOps MLIRStandardOps MLIRAnalysis)
+target_link_libraries(MLIRVectorOps MLIRIR MLIRAffineOps MLIRAnalysis MLIRStandardOps)

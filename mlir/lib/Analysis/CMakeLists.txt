@@ -20,10 +20,6 @@ add_mlir_library(MLIRAnalysis STATIC
   ${MLIR_MAIN_INCLUDE_DIR}/mlir/Analysis
   )
 add_dependencies(MLIRAnalysis
-	#MLIRAffineOps
-  MLIRCallOpInterfacesIncGen
+	MLIRCallOpInterfacesIncGen
   MLIRTypeInferOpInterfaceIncGen
-  #  MLIRLoopOps
-  #MLIRVectorOps
   )
-#target_link_libraries(MLIRAnalysis MLIRAffineOps MLIRLoopOps)# MLIRVectorOps)
